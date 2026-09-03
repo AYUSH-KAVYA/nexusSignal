@@ -1,0 +1,12 @@
+{
+  "name": "nexus-signal",
+  "version": "1.0.0",
+  "description": "Nexus Signal — Intelligent verified communication layer for converting unstructured project conversations into structured tasks",
+  "scripts": {
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "migrate": "cd server && npm run migrate",
+    "test": "cd server && npm test",
+    "build": "cd client && npm run build"
+  }
+}

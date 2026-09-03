@@ -1,0 +1,23 @@
+{
+  "name": "nexus-signal-server",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "migrate": "node src/scripts/migrate.js",
+    "test": "node --test tests/**/*.test.js"
+  },
+  "dependencies": {
+    "chrono-node": "^2.7.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fast-levenshtein": "^3.0.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

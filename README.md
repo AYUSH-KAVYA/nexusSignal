@@ -129,4 +129,4 @@ Nexus Signal includes 3 curated 1-click test scenarios from the **Whitfield Resi
    - Discussion regarding kitchen island HVAC ducting and wiring.
    - Detects near-duplicate overlap with existing **Task #30000000-0000-0000-0000-000000000003 ("MEP Systems Review")**.
    - Demonstrates flagging potential duplicate tasks before creating redundant entries in the project schedule.
-                                
+                                 

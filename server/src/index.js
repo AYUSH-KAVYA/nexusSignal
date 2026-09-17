@@ -20,19 +20,23 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(morgan('dev'));
 
-// Routes
-app.use('/api/conversations', conversationsRouter);
-app.use('/api/items', itemsRouter);
-app.use('/api/projects', projectsRouter);
-app.use('/api/demo', demoRouter);
-
-app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'healthy',
-    timestamp: new Date().toISOString(),
-    service: 'Nexus Signal API'
+// Routes - mounted on both /api and root for serverless flexibility
+const registerRoutes = (prefix = '') => {
+  app.use(`${prefix}/conversations`, conversationsRouter);
+  app.use(`${prefix}/items`, itemsRouter);
+  app.use(`${prefix}/projects`, projectsRouter);
+  app.use(`${prefix}/demo`, demoRouter);
+  app.get(`${prefix}/health`, (req, res) => {
+    res.json({
+      status: 'healthy',
+      timestamp: new Date().toISOString(),
+      service: 'Nexus Signal API'
+    });
   });
-});
+};
+
+registerRoutes('/api');
+registerRoutes('');
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -40,6 +44,10 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal Server Error', message: err.message });
 });
 
-app.listen(PORT, () => {
-  console.log(`Nexus Signal API Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Nexus Signal API Server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;

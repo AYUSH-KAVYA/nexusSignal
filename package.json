@@ -8,5 +8,14 @@
     "migrate": "cd server && npm run migrate",
     "test": "cd server && npm test",
     "build": "cd client && npm run build"
+  },
+  "dependencies": {
+    "chrono-node": "^2.7.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fast-levenshtein": "^3.0.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.5"
   }
 }
